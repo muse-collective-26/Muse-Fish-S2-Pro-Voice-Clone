@@ -13,7 +13,7 @@ You give it a short sample of a voice and a plain-text script. It adds the emoti
 |---|---|
 | **Muse Fish S2 Prompter** (node) | Adds Fish S2 Pro tags such as `[excited]`, `[with gentle warmth]`, `[pause]` and `[emphasis]` to your script, using a language model you choose. Your words stay exactly as you wrote them; only the tags are added. It can also write a short script from an idea. |
 | **Muse Whisper Transcribe** (node) | Writes down the words spoken in your voice sample. Fish S2 uses these as the `reference_text`, which helps the cloned voice. It works with current ComfyUI. |
-| **Muse Fish S2 Pro Voice Clone** (workflow) | Everything wired up, in `example_workflows/`. |
+| **Muse Fish 2 Voice Clone** (workflow) | Everything wired up, in `workflows/`. Drag it onto ComfyUI to open it. |
 
 ## Install
 

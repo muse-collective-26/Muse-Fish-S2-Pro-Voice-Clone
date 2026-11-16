@@ -1,8 +1,8 @@
 {
   "id": "47374774-79d5-4231-9538-4259a9af95b1",
   "revision": 0,
-  "last_node_id": 6042,
-  "last_link_id": 14774,
+  "last_node_id": 6043,
+  "last_link_id": 14776,
   "nodes": [
     {
       "id": 6035,
@@ -70,8 +70,7 @@
         "chunk_fade_shape": "linear"
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "4. Split the voice from any music"
+      "bgcolor": "#000000"
     },
     {
       "id": 6037,
@@ -103,7 +102,7 @@
           "links": null
         }
       ],
-      "title": "1. Your voice sample (5-15 s of clear speech)",
+      "title": "Reference Voice",
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "a6879b83886490dd434249cf729b7cdd2aace241",
@@ -116,12 +115,12 @@
       },
       "widgets_values": {
         "audio": "voice_sample.wav",
-        "start_time": 0,
+        "start_time": 2,
         "duration": 0,
         "choose audio to upload": "image",
         "audiopreview": {
           "params": {
-            "start_time": 0,
+            "start_time": 2,
             "duration": 0,
             "filename": "voice_sample.wav",
             "type": "input"
@@ -130,12 +129,12 @@
       },
       "widgets_values_named": {
         "audio": "voice_sample.wav",
-        "start_time": 0,
+        "start_time": 2,
         "duration": 0,
         "choose audio to upload": "image",
         "audiopreview": {
           "params": {
-            "start_time": 0,
+            "start_time": 2,
             "duration": 0,
             "filename": "voice_sample.wav",
             "type": "input"
@@ -171,7 +170,7 @@
           "widget": {
             "name": "text"
           },
-          "link": 14770
+          "link": 14776
         },
         {
           "name": "reference_text",
@@ -241,8 +240,7 @@
         "reference_text": ""
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "6. Fish S2 Pro voice clone"
+      "bgcolor": "#000000"
     },
     {
       "id": 6033,
@@ -291,8 +289,7 @@
         "volume": 2
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "7. Volume"
+      "bgcolor": "#000000"
     },
     {
       "id": 6000,
@@ -345,15 +342,14 @@
         "quality": "V0"
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "8. Save"
+      "bgcolor": "#000000"
     },
     {
       "id": 6040,
       "type": "MuseFishS2Prompter",
       "pos": [
-        -1256.9020639511286,
-        755.0934808561605
+        -1410.5042010243365,
+        770.119776874192
       ],
       "size": [
         406.27193255615293,
@@ -377,13 +373,13 @@
           "name": "script",
           "type": "STRING",
           "links": [
-            14770
+            14776
           ]
         },
         {
           "name": "report",
           "type": "STRING",
-          "links": null
+          "links": []
         }
       ],
       "properties": {
@@ -404,11 +400,11 @@
         "text": "",
         "mode": "Add tags (keep my words)",
         "base_url": "",
-        "variation": 0
+        "variation": 0,
+        "muse_fish_script_view": ""
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "3. Muse Fish S2 Prompter - adds the emotion tags"
+      "bgcolor": "#000000"
     },
     {
       "id": 6041,
@@ -454,15 +450,14 @@
         "keep_model_loaded": false
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "5. Muse Whisper Transcribe - the words in your sample"
+      "bgcolor": "#000000"
     },
     {
       "id": 6042,
       "type": "PrimitiveStringMultiline",
       "pos": [
-        -1709.273778980046,
-        766.5164506429394
+        -1857.8671507139106,
+        763.1772737500435
       ],
       "size": [
         421.3245706909199,
@@ -481,20 +476,20 @@
           ]
         }
       ],
+      "title": "Dialogue You Want Spoken",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.45.0",
         "Node name for S&R": "PrimitiveStringMultiline"
       },
       "widgets_values": [
-        "Hi, and welcome. I'm really glad you're here.\n\nToday I'm going to show you something I've been working on for a while, and honestly, I think you're going to love it.\n\nSo grab a coffee, get comfortable, and let's get started."
+        "Welcome to Muse Collective and Fish 2 Pro. \nThis is the best way to clone a voice. \ncheck mine out.\nWhat do you think?"
       ],
       "widgets_values_named": {
-        "value": "Hi, and welcome. I'm really glad you're here.\n\nToday I'm going to show you something I've been working on for a while, and honestly, I think you're going to love it.\n\nSo grab a coffee, get comfortable, and let's get started."
+        "value": "Welcome to Muse Collective and Fish 2 Pro. \nThis is the best way to clone a voice. \ncheck mine out.\nWhat do you think?"
       },
       "color": "#3b0ea5",
-      "bgcolor": "#000000",
-      "title": "2. Your script (plain text)"
+      "bgcolor": "#000000"
     }
   ],
   "links": [
@@ -531,14 +526,6 @@
       "AUDIO"
     ],
     [
-      14770,
-      6040,
-      0,
-      6032,
-      1,
-      "STRING"
-    ],
-    [
       14772,
       6035,
       3,
@@ -561,6 +548,14 @@
       6040,
       0,
       "STRING"
+    ],
+    [
+      14776,
+      6040,
+      0,
+      6032,
+      1,
+      "STRING"
     ]
   ],
   "groups": [],
@@ -575,12 +570,15 @@
     "ue_links": [],
     "links_added_by_ue": [],
     "ds": {
-      "scale": 0.5989500000000147,
+      "scale": 0.7972024500000203,
       "offset": [
-        2812.343030711488,
-        198.89832511443768
+        2237.3382325133416,
+        -34.77191001622009
       ]
     }
   },
-  "version": 0.4
+  "version": 0.4,
+  "seed_widgets": {
+    "6032": 11
+  }
 }
