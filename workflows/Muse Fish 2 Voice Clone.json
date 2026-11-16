@@ -1,22 +1,22 @@
 {
   "id": "47374774-79d5-4231-9538-4259a9af95b1",
   "revision": 0,
-  "last_node_id": 6043,
+  "last_node_id": 6045,
   "last_link_id": 14776,
   "nodes": [
     {
       "id": 6035,
       "type": "FL_Audio_Separation",
       "pos": [
-        -816.8680696410474,
-        459.5098311555876
+        -1114.9103047094347,
+        440.19227888263663
       ],
       "size": [
         270,
         166
       ],
       "flags": {},
-      "order": 2,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -76,8 +76,8 @@
       "id": 6037,
       "type": "VHS_LoadAudioUpload",
       "pos": [
-        -1537.6701997821497,
-        464.71625709584316
+        -1841.231735499952,
+        437.1197538487704
       ],
       "size": [
         686.9692392155264,
@@ -148,15 +148,15 @@
       "id": 6032,
       "type": "FishS2VoiceCloneTTS",
       "pos": [
-        -522.5178888016148,
-        460.21373447399714
+        -526.6573642886758,
+        439.5163570386923
       ],
       "size": [
         496.3825747775154,
         660.4074220159433
       ],
       "flags": {},
-      "order": 5,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -246,15 +246,15 @@
       "id": 6033,
       "type": "AudioAdjustVolume",
       "pos": [
-        0.9655308096873938,
-        464.6137522671083
+        2.3453559720410375,
+        438.397074182389
       ],
       "size": [
         270,
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -303,7 +303,7 @@
         321.90623465644444
       ],
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -356,7 +356,7 @@
         555.070246459976
       ],
       "flags": {},
-      "order": 3,
+      "order": 4,
       "mode": 0,
       "inputs": [
         {
@@ -410,15 +410,15 @@
       "id": 6041,
       "type": "MuseWhisperTranscribe",
       "pos": [
-        -830.2336856873471,
-        757.502919465989
+        -823.3345598755789,
+        441.52295728700483
       ],
       "size": [
         277.015625,
         106
       ],
       "flags": {},
-      "order": 4,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
@@ -490,6 +490,33 @@
       },
       "color": "#3b0ea5",
       "bgcolor": "#000000"
+    },
+    {
+      "id": 6045,
+      "type": "MarkdownNote",
+      "pos": [
+        -981.8280060959844,
+        761.2774852311297
+      ],
+      "size": [
+        432.2720571167263,
+        579.3160156494623
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "# Muse Fish 2 Voice Clone\n\n**Built with Fish Audio.** Fish Audio S2 Pro is **non-commercial only**. For commercial use, ask business@fish.audio.\n\n## 1. Node packs you need\nUse **ComfyUI Manager → Install Missing Custom Nodes**, then restart ComfyUI.\n\n- **Fish S2 Pro nodes** (they do the speaking, so you need these): [ComfyUI-FishAudioS2](https://github.com/Saganaki22/ComfyUI-FishAudioS2)\n- **Muse nodes** (the Prompter and Whisper): [Muse-Fish-S2-Pro-Voice-Clone](https://github.com/muse-collective-26/Muse-Fish-S2-Pro-Voice-Clone)\n- **FL Audio Separation**: [ComfyUI_Fill-Nodes](https://github.com/filliptm/ComfyUI_Fill-Nodes)\n- **Load Audio (Upload)**: [ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)\n\n## 2. Models (they download by themselves on the first run)\n- **Fish S2 Pro.** Pick one in **model_path** on the Fish node. Files go in `ComfyUI/models/fishaudioS2/`.\n  - `s2-pro-fp8`: [drbaph/s2-pro-fp8](https://huggingface.co/drbaph/s2-pro-fp8). About 12 GB VRAM, and needs an RTX 4090 or 5090.\n  - `s2-pro`: [fishaudio/s2-pro](https://huggingface.co/fishaudio/s2-pro). Full size, about 24 GB VRAM.\n  - `s2-pro-bnb-int8` (about 8–9 GB) or `s2-pro-bnb-nf4` (about 4–5 GB): for smaller GPUs. These need `bitsandbytes` installed.\n- **Whisper large-v3**: [openai/whisper-large-v3](https://huggingface.co/openai/whisper-large-v3). About 3 GB.\n- **HDemucs**: the vocal split model. It's small.\n\n## 3. How to use\n1. **Reference Voice:** upload 5–15 seconds of clear speech. Only use a voice you have permission to use.\n2. **Dialogue You Want Spoken:** type your script.\n3. **Prompter:** pick a provider, press **↻ Models**, then choose a model.\n   - Ollama and LM Studio are free and run on your computer.\n   - ChatGPT needs `OPENAI_API_KEY` set in the environment, and Gemini needs `GEMINI_API_KEY`.\n4. Press **Run**. The audio is saved in `output/Muse/Audio/`.\n"
+      ],
+      "widgets_values_named": {
+        "text": "# Muse Fish 2 Voice Clone\n\n**Built with Fish Audio.** Fish Audio S2 Pro is **non-commercial only**. For commercial use, ask business@fish.audio.\n\n## 1. Node packs you need\nUse **ComfyUI Manager → Install Missing Custom Nodes**, then restart ComfyUI.\n\n- **Fish S2 Pro nodes** (they do the speaking, so you need these): [ComfyUI-FishAudioS2](https://github.com/Saganaki22/ComfyUI-FishAudioS2)\n- **Muse nodes** (the Prompter and Whisper): [Muse-Fish-S2-Pro-Voice-Clone](https://github.com/muse-collective-26/Muse-Fish-S2-Pro-Voice-Clone)\n- **FL Audio Separation**: [ComfyUI_Fill-Nodes](https://github.com/filliptm/ComfyUI_Fill-Nodes)\n- **Load Audio (Upload)**: [ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)\n\n## 2. Models (they download by themselves on the first run)\n- **Fish S2 Pro.** Pick one in **model_path** on the Fish node. Files go in `ComfyUI/models/fishaudioS2/`.\n  - `s2-pro-fp8`: [drbaph/s2-pro-fp8](https://huggingface.co/drbaph/s2-pro-fp8). About 12 GB VRAM, and needs an RTX 4090 or 5090.\n  - `s2-pro`: [fishaudio/s2-pro](https://huggingface.co/fishaudio/s2-pro). Full size, about 24 GB VRAM.\n  - `s2-pro-bnb-int8` (about 8–9 GB) or `s2-pro-bnb-nf4` (about 4–5 GB): for smaller GPUs. These need `bitsandbytes` installed.\n- **Whisper large-v3**: [openai/whisper-large-v3](https://huggingface.co/openai/whisper-large-v3). About 3 GB.\n- **HDemucs**: the vocal split model. It's small.\n\n## 3. How to use\n1. **Reference Voice:** upload 5–15 seconds of clear speech. Only use a voice you have permission to use.\n2. **Dialogue You Want Spoken:** type your script.\n3. **Prompter:** pick a provider, press **↻ Models**, then choose a model.\n   - Ollama and LM Studio are free and run on your computer.\n   - ChatGPT needs `OPENAI_API_KEY` set in the environment, and Gemini needs `GEMINI_API_KEY`.\n4. Press **Run**. The audio is saved in `output/Muse/Audio/`.\n"
+      },
+      "color": "#cf2a2a",
+      "bgcolor": "#3e2525",
+      "title": "Read me: node packs + models"
     }
   ],
   "links": [
@@ -570,10 +597,10 @@
     "ue_links": [],
     "links_added_by_ue": [],
     "ds": {
-      "scale": 0.7972024500000203,
+      "scale": 0.7247295000000187,
       "offset": [
-        2237.3382325133416,
-        -34.77191001622009
+        2535.1366598045756,
+        -99.0927437081455
       ]
     }
   },
