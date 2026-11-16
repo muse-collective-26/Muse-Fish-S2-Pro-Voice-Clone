@@ -1,0 +1,586 @@
+{
+  "id": "47374774-79d5-4231-9538-4259a9af95b1",
+  "revision": 0,
+  "last_node_id": 6042,
+  "last_link_id": 14774,
+  "nodes": [
+    {
+      "id": 6035,
+      "type": "FL_Audio_Separation",
+      "pos": [
+        -816.8680696410474,
+        459.5098311555876
+      ],
+      "size": [
+        270,
+        166
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 14768
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bass",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "drums",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "other",
+          "type": "AUDIO",
+          "links": []
+        },
+        {
+          "name": "vocals",
+          "type": "AUDIO",
+          "links": [
+            14772
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_fill-nodes",
+        "ver": "26efe9c06ab1a317f8bd69c72ec228b2226ca1e7",
+        "Node name for S&R": "FL_Audio_Separation",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        25,
+        0.1,
+        "linear"
+      ],
+      "widgets_values_named": {
+        "chunk_length": 25,
+        "chunk_overlap": 0.1,
+        "chunk_fade_shape": "linear"
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "4. Split the voice from any music"
+    },
+    {
+      "id": 6037,
+      "type": "VHS_LoadAudioUpload",
+      "pos": [
+        -1537.6701997821497,
+        464.71625709584316
+      ],
+      "size": [
+        686.9692392155264,
+        213.35494372972903
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            14768,
+            14769
+          ]
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "title": "1. Your voice sample (5-15 s of clear speech)",
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "a6879b83886490dd434249cf729b7cdd2aace241",
+        "Node name for S&R": "VHS_LoadAudioUpload",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": {
+        "audio": "voice_sample.wav",
+        "start_time": 0,
+        "duration": 0,
+        "choose audio to upload": "image",
+        "audiopreview": {
+          "params": {
+            "start_time": 0,
+            "duration": 0,
+            "filename": "voice_sample.wav",
+            "type": "input"
+          }
+        }
+      },
+      "widgets_values_named": {
+        "audio": "voice_sample.wav",
+        "start_time": 0,
+        "duration": 0,
+        "choose audio to upload": "image",
+        "audiopreview": {
+          "params": {
+            "start_time": 0,
+            "duration": 0,
+            "filename": "voice_sample.wav",
+            "type": "input"
+          }
+        }
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000"
+    },
+    {
+      "id": 6032,
+      "type": "FishS2VoiceCloneTTS",
+      "pos": [
+        -522.5178888016148,
+        460.21373447399714
+      ],
+      "size": [
+        496.3825747775154,
+        660.4074220159433
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 14769
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 14770
+        },
+        {
+          "name": "reference_text",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "reference_text"
+          },
+          "link": 14773
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            14762
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-fish-audio-s2",
+        "ver": "521f33fe79c081da314dc905ce399c62edb24749",
+        "Node name for S&R": "FishS2VoiceCloneTTS",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "s2-pro-fp8",
+        "",
+        "en",
+        "auto",
+        "auto",
+        "auto",
+        0,
+        200,
+        0.7,
+        0.7,
+        1.2,
+        5,
+        "fixed",
+        true,
+        false,
+        false,
+        ""
+      ],
+      "widgets_values_named": {
+        "model_path": "s2-pro-fp8",
+        "text": "",
+        "language": "en",
+        "device": "auto",
+        "precision": "auto",
+        "attention": "auto",
+        "max_new_tokens": 0,
+        "chunk_length": 200,
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "repetition_penalty": 1.2,
+        "seed": 5,
+        "control_after_generate": "fixed",
+        "keep_model_loaded": true,
+        "offload_to_cpu": false,
+        "compile_model": false,
+        "reference_text": ""
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "6. Fish S2 Pro voice clone"
+    },
+    {
+      "id": 6033,
+      "type": "AudioAdjustVolume",
+      "pos": [
+        0.9655308096873938,
+        464.6137522671083
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 14762
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            14766
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.24.0",
+        "Node name for S&R": "AudioAdjustVolume",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        2
+      ],
+      "widgets_values_named": {
+        "volume": 2
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "7. Volume"
+    },
+    {
+      "id": 6000,
+      "type": "SaveAudioMP3",
+      "pos": [
+        -0.7140024367394409,
+        574.4313704098307
+      ],
+      "size": [
+        479.13413477321234,
+        321.90623465644444
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 14766
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "Node name for S&R": "SaveAudioMP3",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "filename_prefix": true,
+            "quality": true,
+            "audioUI": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Muse/Audio/mcAUDIO",
+        "V0"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "Muse/Audio/mcAUDIO",
+        "quality": "V0"
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "8. Save"
+    },
+    {
+      "id": 6040,
+      "type": "MuseFishS2Prompter",
+      "pos": [
+        -1256.9020639511286,
+        755.0934808561605
+      ],
+      "size": [
+        406.27193255615293,
+        555.070246459976
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 14774
+        }
+      ],
+      "outputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "links": [
+            14770
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MuseFishS2Prompter"
+      },
+      "widgets_values": [
+        "ChatGPT (OpenAI)",
+        "",
+        "",
+        "Add tags (keep my words)",
+        "",
+        0,
+        ""
+      ],
+      "widgets_values_named": {
+        "provider": "ChatGPT (OpenAI)",
+        "model": "",
+        "text": "",
+        "mode": "Add tags (keep my words)",
+        "base_url": "",
+        "variation": 0
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "3. Muse Fish S2 Prompter - adds the emotion tags"
+    },
+    {
+      "id": 6041,
+      "type": "MuseWhisperTranscribe",
+      "pos": [
+        -830.2336856873471,
+        757.502919465989
+      ],
+      "size": [
+        277.015625,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 14772
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            14773
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MuseWhisperTranscribe"
+      },
+      "widgets_values": [
+        "english",
+        "openai/whisper-large-v3",
+        false
+      ],
+      "widgets_values_named": {
+        "language": "english",
+        "model": "openai/whisper-large-v3",
+        "keep_model_loaded": false
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "5. Muse Whisper Transcribe - the words in your sample"
+    },
+    {
+      "id": 6042,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1709.273778980046,
+        766.5164506429394
+      ],
+      "size": [
+        421.3245706909199,
+        543.7019040771805
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            14774
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.45.0",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "Hi, and welcome. I'm really glad you're here.\n\nToday I'm going to show you something I've been working on for a while, and honestly, I think you're going to love it.\n\nSo grab a coffee, get comfortable, and let's get started."
+      ],
+      "widgets_values_named": {
+        "value": "Hi, and welcome. I'm really glad you're here.\n\nToday I'm going to show you something I've been working on for a while, and honestly, I think you're going to love it.\n\nSo grab a coffee, get comfortable, and let's get started."
+      },
+      "color": "#3b0ea5",
+      "bgcolor": "#000000",
+      "title": "2. Your script (plain text)"
+    }
+  ],
+  "links": [
+    [
+      14762,
+      6032,
+      0,
+      6033,
+      0,
+      "AUDIO"
+    ],
+    [
+      14766,
+      6033,
+      0,
+      6000,
+      0,
+      "AUDIO"
+    ],
+    [
+      14768,
+      6037,
+      0,
+      6035,
+      0,
+      "AUDIO"
+    ],
+    [
+      14769,
+      6037,
+      0,
+      6032,
+      0,
+      "AUDIO"
+    ],
+    [
+      14770,
+      6040,
+      0,
+      6032,
+      1,
+      "STRING"
+    ],
+    [
+      14772,
+      6035,
+      3,
+      6041,
+      0,
+      "AUDIO"
+    ],
+    [
+      14773,
+      6041,
+      0,
+      6032,
+      2,
+      "STRING"
+    ],
+    [
+      14774,
+      6042,
+      0,
+      6040,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "frontendVersion": "1.59.1",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "ds": {
+      "scale": 0.5989500000000147,
+      "offset": [
+        2812.343030711488,
+        198.89832511443768
+      ]
+    }
+  },
+  "version": 0.4
+}

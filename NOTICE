@@ -1,0 +1,18 @@
+Muse Fish S2 Pro Voice Clone - notices
+
+1. Muse Collective code and workflow (fish_prompter.py, whisper_transcribe.py, js/, example_workflows/)
+   Copyright (c) 2026 Muse Collective. MIT License (see LICENSE).
+
+2. Fish Audio S2 Pro (used by the workflow, NOT included in this repository)
+   This model is licensed under the Fish Audio Research License, Copyright © 39 AI, INC. All Rights Reserved.
+   Built with Fish Audio. The full licence is in LICENSE-FISH-AUDIO.md.
+   This repository does not include or change the Fish Audio Materials. The Muse nodes only prepare the text
+   (emotion tags) and the reference text that the Fish S2 nodes read.
+   Research and non-commercial use only; commercial use needs a separate licence from Fish Audio (business@fish.audio).
+
+3. Other projects the workflow uses (not included here; each under its own licence)
+   - ComfyUI-fish-audio-s2 (Saganaki22): Fish Audio Research License
+   - ComfyUI_Fill-Nodes (filliptm): Apache License 2.0
+   - ComfyUI-VideoHelperSuite (Kosinkadink): GNU GPL v3
+   - openai/whisper-large-v3 (model): Apache License 2.0
+   - Hugging Face transformers, PyTorch / torchaudio: their own licences (installed with ComfyUI)

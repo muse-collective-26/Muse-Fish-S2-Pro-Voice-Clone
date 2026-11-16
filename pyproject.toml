@@ -1,0 +1,13 @@
+[project]
+name = "muse-fish-s2-pro-voice-clone"
+description = "Muse Collective: a Fish Audio S2 Pro voice-clone workflow, a prompter node that adds Fish S2 emotion tags with the LLM you choose (Ollama, LM Studio, ChatGPT, Gemini, OpenAI-compatible), and a Whisper transcribe node that works with current ComfyUI."
+version = "1.0.0"
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/muse-collective-26/Muse-Fish-S2-Pro-Voice-Clone"
+
+[tool.comfy]
+PublisherId = "musecollective"
+DisplayName = "Muse Fish S2 Pro Voice Clone"
