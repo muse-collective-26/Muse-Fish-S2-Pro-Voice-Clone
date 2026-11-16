@@ -38,7 +38,7 @@ You give it a short sample of a voice and a plain-text script. It adds the emoti
 
 1. **Your voice sample:** upload 5–15 seconds of clear speech in the voice you want. You need the right to use that voice.
 2. **Your script:** type it as plain text, in paragraphs.
-3. **Muse Fish S2 Prompter:** pick a **provider** and a **model**:
+3. **Muse Fish S2 Prompter:** pick a **provider**, then press **↻ Models** and choose a model from the list (or type its name in **model**):
    - **Ollama (local)** or **LM Studio (local)**: free, and runs on your own computer. Type the name of a model you have, for example `qwen3:8b`.
    - **ChatGPT (OpenAI)**: needs `OPENAI_API_KEY` set in the ComfyUI environment. Leave **model** empty to use the default.
    - **Gemini**: needs `GEMINI_API_KEY` set in the ComfyUI environment.

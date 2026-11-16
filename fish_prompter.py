@@ -134,6 +134,77 @@ def ask(provider, model, system, user, base_url=""):
     return ((d.get("choices") or [{}])[0].get("message") or {}).get("content") or ""
 
 
+def _get(url, headers=None, timeout=20):
+    req = urllib.request.Request(url, headers=headers or {}, method="GET")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"The server answered HTTP {e.code}" + (" - check the API key." if e.code in (401, 403) else ".")) from None
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"Couldn't reach {url.split('/api/')[0].split('/v1')[0]} ({e.reason}). Is it running?") from None
+
+
+def list_models(provider, base_url=""):
+    """[2026-11-16] Andy: "a selection of models for each provider, including the ones on your system" (like Muse
+    Director 2.1's Refresh models). Asks the provider which models it has. -> sorted list of model names."""
+    p = PROVIDERS.get(provider) or PROVIDERS["Ollama (local)"]
+    if p["kind"] == "openai":   # the OpenAI key only ever goes to OpenAI
+        key = os.environ.get(p["key"], "").strip()
+        if not key:
+            raise RuntimeError("Set OPENAI_API_KEY in the ComfyUI environment (then restart ComfyUI) to list ChatGPT models.")
+        d = _get(f"{p['url']}/models", {"Authorization": f"Bearer {key}"})
+        names = [m.get("id", "") for m in d.get("data") or []]
+        # chat models only (not image, audio, embedding or moderation models)
+        names = [n for n in names if re.match(r"^(gpt-|o\d|chatgpt-)", n)
+                 and not re.search(r"image|audio|realtime|transcribe|tts|search|embedding|moderation|instruct", n)]
+        return sorted(set(names), reverse=True)
+    url = (base_url or "").strip().rstrip("/") or p["url"]
+    if not url:
+        raise ValueError(f"{provider} needs a base_url first.")
+    if p["kind"] == "ollama":
+        d = _get(re.sub(r"/(api|v1)$", "", url) + "/api/tags")
+        return sorted({m.get("name", "") for m in d.get("models") or []} - {""})
+    headers = {}
+    key_name = p.get("key")
+    if provider == "Gemini":
+        key = os.environ.get(key_name, "").strip()
+        if not key:
+            raise RuntimeError("Set GEMINI_API_KEY in the ComfyUI environment (then restart ComfyUI) to list Gemini models.")
+        if "googleapis.com" not in url:
+            raise ValueError("Gemini's key is only sent to Google's address - leave base_url empty for Gemini.")
+        headers["Authorization"] = f"Bearer {key}"
+    elif key_name and os.environ.get(key_name, "").strip():
+        headers["Authorization"] = f"Bearer {os.environ[key_name].strip()}"
+    if provider == "LM Studio (local)" and "/v1" not in url:
+        url += "/v1"
+    d = _get(f"{url}/models", headers)
+    names = [str(m.get("id", "")).removeprefix("models/") for m in d.get("data") or []]
+    if provider == "Gemini":
+        names = [n for n in names if n.startswith("gemini") and not re.search(r"embedding|image|tts|live|audio", n)]
+    return sorted(set(names) - {""})
+
+
+def _register_routes():
+    try:
+        from aiohttp import web
+        from server import PromptServer
+    except Exception:
+        return
+    if getattr(PromptServer, "instance", None) is None:
+        return
+
+    @PromptServer.instance.routes.post("/muse_fish_s2/models")
+    async def _models_route(request):
+        import asyncio
+        try:
+            body = await request.json()
+            models = await asyncio.to_thread(list_models, str(body.get("provider") or ""), str(body.get("base_url") or ""))
+            return web.json_response({"models": models})
+        except Exception as e:   # the message only (never a key or a server body)
+            return web.json_response({"error": str(e)}, status=400)
+
+
 class MuseFishS2Prompter:
     CATEGORY = "Muse Collective/Audio"
     FUNCTION = "run"
@@ -184,6 +255,8 @@ class MuseFishS2Prompter:
         log.info("%s done: %s", TAG, report)
         return {"ui": {"muse_fish_script": [script], "muse_fish_report": [report]}, "result": (script, report)}
 
+
+_register_routes()
 
 NODE_CLASS_MAPPINGS = {"MuseFishS2Prompter": MuseFishS2Prompter}
 NODE_DISPLAY_NAME_MAPPINGS = {"MuseFishS2Prompter": "Muse Fish S2 Prompter"}
